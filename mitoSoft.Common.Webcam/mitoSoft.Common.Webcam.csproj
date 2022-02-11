@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>mitoSoft</Company>
+    <Description>A Blazor Serverside library for the CGI API of standard webcams.
+Contains already a mobotix, a EasyN and a reolink adapter.</Description>
+    <Copyright>(c) mitosoft</Copyright>
+    <PackageProjectUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</RepositoryUrl>
+    <PackageIcon>mitoSoft.png</PackageIcon>
+    <PackageTags>Webcam Blazor Mobotix reolink EasyN</PackageTags>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="mitoSoft.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

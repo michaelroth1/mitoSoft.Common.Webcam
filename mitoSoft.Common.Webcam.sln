@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mitoSoft.Common.Webcam", "mitoSoft.Common.Webcam\mitoSoft.Common.Webcam.csproj", "{B640AA64-2FC1-4B68-ACF1-FC9BC381CE56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B640AA64-2FC1-4B68-ACF1-FC9BC381CE56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B640AA64-2FC1-4B68-ACF1-FC9BC381CE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B640AA64-2FC1-4B68-ACF1-FC9BC381CE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B640AA64-2FC1-4B68-ACF1-FC9BC381CE56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69713C3D-A142-4786-89CF-C1F72A9698C4}
+	EndGlobalSection
+EndGlobal
