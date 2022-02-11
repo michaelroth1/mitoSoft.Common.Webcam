@@ -21,6 +21,13 @@ namespace mitoSoft.Common.Webcam.Adapters
     Befehl zum ansteuern der 2. Speicherposition: http://192.168.2.10:81/decoder_control.cgi?command=33
     ...
     insgesamt gibt es mindestens 5 Speicherpositionen
+
+    Verwendung in Synology Surveillance Station (https://camera-sdk.com/p_6665-how-to-connect-to-a-easyn-camera.html):
+    http://[user]:[password]@192.168.2.10:81/videostream.cgi
+
+    Verwendung als direkter Link:
+    http://192.168.2.10:81/snapshot.cgi?user=[username]&pwd=[password]
+
     */
     public class EasyNAdapter : CameraAdapter
     {
