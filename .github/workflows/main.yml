@@ -1,4 +1,4 @@
-name: publish mitoSoft.Razor.Spinners
+name: publish mitoSoft.Common.Webcam
 on:
   push:
     branches:
