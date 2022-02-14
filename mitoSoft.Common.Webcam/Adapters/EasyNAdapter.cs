@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text;
 
 namespace mitoSoft.Common.Webcam.Adapters
 {
@@ -31,8 +32,54 @@ namespace mitoSoft.Common.Webcam.Adapters
     */
     public class EasyNAdapter : CameraAdapter
     {
-        public EasyNAdapter(string ip, NetworkCredential credentials) : base($"http://{ip}:81/snapshot.cgi", credentials)
+        public EasyNAdapter(string ip, NetworkCredential credentials)
+            : base($"http://{ip}:81/snapshot.cgi", credentials)
         {
+            IP = ip;
+        }
+
+        public string IP { get; }
+
+        public async void ToPosition(int positionId)
+        {
+            if (positionId < 1 || positionId > 5)
+            {
+                throw new ArgumentException("Invalid position identifier (not between and 5).", nameof(positionId));
+            }
+            await SendCommand(31 + (positionId - 1) * 2);
+        }
+
+        public async Task<bool> SavePos(int positionId)
+        {
+            if (positionId < 1 || positionId > 5)
+            {
+                throw new ArgumentException("Invalid position identifier.", nameof(positionId));
+            }
+            return await SendCommand(30 + (positionId - 1) * 2);
+        }
+
+        public async void MoveDown() => await SendCommand(0);
+
+        public async void MoveUp() => await SendCommand(2);
+
+        public async void MoveRight() => await SendCommand(4);
+
+        public async void MoveLeft() => await SendCommand(6);
+
+        public async Task<bool> SendCommand(int command)
+        {
+            using var client = new HttpClient()
+            {
+                Timeout = Timeout,
+            };
+
+            var url = $"http://{IP}:81/decoder_control.cgi?onestep=1&command={command}";
+            var auth = Encoding.ASCII.GetBytes($"{Credentials.UserName}:{Credentials.Password}");
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(auth));
+
+            var response = await client.GetAsync(url);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

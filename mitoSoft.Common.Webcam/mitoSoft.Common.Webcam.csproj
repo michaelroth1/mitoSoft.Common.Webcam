@@ -12,8 +12,9 @@ Contains already a mobotix, a EasyN and a reolink adapter.</Description>
     <PackageProjectUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</PackageProjectUrl>
     <RepositoryUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</RepositoryUrl>
     <PackageIcon>mitoSoft.png</PackageIcon>
-    <PackageTags>Webcam Blazor Mobotix reolink EasyN</PackageTags>
-    <Version>1.0.1</Version>
+    <PackageTags>Webcam Blazor Mobotix Reolink EasyN</PackageTags>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>[Feature] added control functions in EasyNAdapter as well as ReolinkAdapter</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

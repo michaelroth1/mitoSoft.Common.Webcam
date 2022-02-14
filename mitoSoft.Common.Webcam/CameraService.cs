@@ -25,7 +25,7 @@ namespace mitoSoft.Common.Webcam
         {
             _count++;
             _cancelTask = false;
-            Task.Run(() => this.BackgroundWorker());
+            Task.Run(() => BackgroundWorker());
         }
 
         public void StopStream()
@@ -44,7 +44,7 @@ namespace mitoSoft.Common.Webcam
             {
                 ImageString = (await _cameraHelper.TryGetImage())?.ToBase64String();
 
-                this.OnImageStringRead?.Invoke(this, new CameraEventArgs(ImageString));
+                OnImageStringRead?.Invoke(this, new CameraEventArgs(ImageString));
 
                 if (_cancelTask)
                 {

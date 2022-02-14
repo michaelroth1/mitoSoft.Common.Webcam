@@ -6,7 +6,7 @@
 
         public CameraEventArgs(string? imageString)
         {
-            this.ImageString = imageString;
+            ImageString = imageString;
         }
     }
 }
