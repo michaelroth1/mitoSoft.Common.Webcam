@@ -1,0 +1,25 @@
+﻿@*https://stackoverflow.com/questions/49689043/how-to-circle-div-into-alignment-the-left-right-up-down-button-in-html-css/49689500*@
+
+
+<div class="d-flex justify-content-center">
+    <div class="circleBase" id='rotateMode'>
+        <button type="button" id="left" class="btn btn-primary mitosoft-btn mitosoft-btn-primary" @onclick="@LeftClicked">⟵</button>
+        <button type="button" id="right" class="btn btn-primary mitosoft-btn mitosoft-btn-primary" @onclick="@RightClicked">⟶</button>
+        <button type="button" id="up" class="btn btn-primary mitosoft-btn mitosoft-btn-primary" @onclick="@UpClicked">↑</button>
+        <button type="button" id="down" class="btn btn-primary mitosoft-btn mitosoft-btn-primary" @onclick="@DownClicked">↓</button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> LeftClicked { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> RightClicked { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> UpClicked { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> DownClicked { get; set; }
+}
