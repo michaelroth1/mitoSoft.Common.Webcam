@@ -20,6 +20,8 @@ namespace mitoSoft.Common.Webcam
 
         public string? ImageString { get; set; }
 
+        public TimeSpan RequestWaitingTime { get; set; } = TimeSpan.FromMilliseconds(200);
+
         [SupportedOSPlatform("windows")]
         public void StartStream()
         {
@@ -51,7 +53,7 @@ namespace mitoSoft.Common.Webcam
                     return;
                 }
 
-                await Task.Delay(50);
+                await Task.Delay((int)RequestWaitingTime.TotalMilliseconds);
             }
         }
     }
