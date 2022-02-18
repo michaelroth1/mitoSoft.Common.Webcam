@@ -8,9 +8,11 @@ namespace mitoSoft.Common.Webcam
     {
         public event EventHandler<CameraEventArgs>? OnImageStringRead;
 
-        private bool _cancelTask = false;
         private readonly ICameraAdapter _cameraHelper = default!;
-        private int _count = 0;
+        private bool _taskCompleted = true;
+        private DateTime _lastStreamRequest;
+        private bool _cancelTask = false;
+        private int _consumerCount = 0;
 
         public CameraService(ICameraAdapter cameraHelper)
         {
@@ -22,18 +24,25 @@ namespace mitoSoft.Common.Webcam
 
         public TimeSpan RequestWaitingTime { get; set; } = TimeSpan.FromMilliseconds(200);
 
+        public TimeSpan ConsumerResponsiveTime { get; set; } = TimeSpan.FromMinutes(10);
+
         [SupportedOSPlatform("windows")]
         public void StartStream()
         {
-            _count++;
-            _cancelTask = false;
-            Task.Run(() => BackgroundWorker());
+            this._consumerCount++;
+            this._cancelTask = false;
+            this._lastStreamRequest = DateTime.Now;
+
+            if (_taskCompleted)
+            {
+                Task.Run(() => BackgroundWorker());
+            }
         }
 
         public void StopStream()
         {
-            _count--;
-            if (_count <= 0)
+            this._consumerCount--;
+            if (_consumerCount <= 0)
             {
                 _cancelTask = true;
             }
@@ -42,19 +51,25 @@ namespace mitoSoft.Common.Webcam
         [SupportedOSPlatform("windows")]
         private async void BackgroundWorker()
         {
+            _taskCompleted = false;
+
             while (true)
             {
                 ImageString = (await _cameraHelper.TryGetImage())?.ToBase64String();
 
                 OnImageStringRead?.Invoke(this, new CameraEventArgs(ImageString));
 
-                if (_cancelTask)
+                if (_cancelTask
+                    || DateTime.Now - _lastStreamRequest > ConsumerResponsiveTime)
                 {
-                    return;
+                    break;
                 }
 
                 await Task.Delay((int)RequestWaitingTime.TotalMilliseconds);
             }
+
+            _consumerCount = 0;
+            _taskCompleted = true;
         }
     }
 }
