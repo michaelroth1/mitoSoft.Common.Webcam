@@ -5,7 +5,7 @@
 #  <RepositoryUrl>https://github.com/michaelroth1/homeNet.Components</RepositoryUrl>
 #</PropertyGroup>
 
-name: NuGet Generation for homeNet.Components
+name: NuGet Generation for mitoSoft.Common.Webcam
 
 on:
   push:
@@ -49,5 +49,5 @@ jobs:
       - name: Build solution and generate NuGet package
         run: dotnet build ${{ env.PROJECT_FOLDER }}/${{ env.PROJECT_FILE }} -c Release /p:Version=${{steps.getversion.outputs.version}}      
           
-      - name: Push generated package to GitHub registry
+      - name: Push generated package to Nuget.org
         run: dotnet nuget push ./${{env.PROJECT_FOLDER}}/bin/Release/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source "${{env.SOURCE_URL}}" --skip-duplicate --no-symbols
