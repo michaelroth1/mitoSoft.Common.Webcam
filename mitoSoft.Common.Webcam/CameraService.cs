@@ -8,17 +8,18 @@ namespace mitoSoft.Common.Webcam
     {
         public event EventHandler<CameraEventArgs>? OnImageStringRead;
 
-        private readonly ICameraAdapter _cameraHelper = default!;
         private bool _taskCompleted = true;
         private DateTime _lastStreamRequest;
         private bool _cancelTask = false;
         private int _consumerCount = 0;
 
-        public CameraService(ICameraAdapter cameraHelper)
+        public CameraService(ICameraAdapter adapter)
         {
-            _cameraHelper = cameraHelper;
+            this.Adapter = adapter;
             _cancelTask = false;
         }
+
+        public ICameraAdapter Adapter { get; } = default!;
 
         public string? ImageString { get; set; }
 
@@ -55,7 +56,7 @@ namespace mitoSoft.Common.Webcam
 
             while (true)
             {
-                ImageString = (await _cameraHelper.TryGetImage())?.ToBase64String();
+                ImageString = (await Adapter.TryGetImage())?.ToBase64String();
 
                 OnImageStringRead?.Invoke(this, new CameraEventArgs(ImageString));
 

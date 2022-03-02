@@ -13,8 +13,8 @@ Contains already a mobotix, a EasyN and a reolink adapter.</Description>
     <RepositoryUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</RepositoryUrl>
     <PackageIcon>mitoSoft.png</PackageIcon>
     <PackageTags>Webcam Blazor Mobotix Reolink EasyN</PackageTags>
-    <Version>1.0.4</Version>
-    <PackageReleaseNotes>[Feature] added ConsumerResponsiveTime which represent the time the cam stays responsive. Afterwards a retrigger is needed.</PackageReleaseNotes>
+    <Version>1.0.5</Version>
+    <PackageReleaseNotes>[Feature] addedAdapter property</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
