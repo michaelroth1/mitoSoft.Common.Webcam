@@ -13,8 +13,8 @@ Contains already a mobotix, a EasyN and a reolink adapter.</Description>
     <RepositoryUrl>https://github.com/michaelroth1/mitoSoft.Common.Webcam</RepositoryUrl>
     <PackageIcon>mitoSoft.png</PackageIcon>
     <PackageTags>Webcam Blazor Mobotix Reolink EasyN</PackageTags>
-    <Version>1.0.10</Version>
-    <PackageReleaseNotes>[Feature] addedAdapter property</PackageReleaseNotes>
+    <Version>1.1.0</Version>
+    <PackageReleaseNotes>[Bugfix] GDI+ Error when saving image </PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

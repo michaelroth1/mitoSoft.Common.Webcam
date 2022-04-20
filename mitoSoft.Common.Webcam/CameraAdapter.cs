@@ -58,9 +58,10 @@ namespace mitoSoft.Common.Webcam
 
             var response = await client.GetAsync(_imageUrl);
             using var stream = new StreamReader(await response.Content.ReadAsStreamAsync());
-            var image = Image.FromStream(stream.BaseStream);
 
-            return image;
+            using var image = Image.FromStream(stream.BaseStream, false, true);
+
+            return new Bitmap(image);
         }
     }
 }
