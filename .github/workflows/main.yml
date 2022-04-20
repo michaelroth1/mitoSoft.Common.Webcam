@@ -5,16 +5,13 @@
 #  <RepositoryUrl>https://github.com/michaelroth1/homeNet.Components</RepositoryUrl>
 #</PropertyGroup>
 
-name: NuGet Generation for mitoSoft.Common.Webcam
+name: NuGet generation for mitoSoft.Common.Webcam
 
 on:
   push:
     branches:
       - main
-    #tags:
-      #- "v*"
-  workflow_dispatch:
-    
+      
 env:
   SOURCE_URL: https://api.nuget.org/v3/index.json
   PROJECT_FILE: mitoSoft.Common.Webcam.csproj
